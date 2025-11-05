@@ -1,28 +1,43 @@
-import { useState } from 'react'
+import React from 'react';
+import OnboardingBanner from './components/OnboardingBanner';
+import Recommendations from './components/Recommendations';
+import BrowseSection from './components/BrowseSection';
+import BottomNav from './components/BottomNav';
+import { Bell } from 'lucide-react';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
+    <div className="min-h-screen bg-[#FDFCF7] text-[#2E2E2E]">
+      {/* Top App Bar */}
+      <header className="sticky top-0 z-10 bg-[#FDFCF7]/95 backdrop-blur border-b border-slate-200">
+        <div className="mx-auto flex max-w-md items-center justify-between px-4 py-3">
+          <div className="flex items-center gap-2">
+            <div className="h-8 w-8 rounded-xl bg-[#A8C686] shadow-sm" />
+            <div className="leading-tight">
+              <p className="text-xs text-slate-600">Welcome to</p>
+              <h1 className="text-lg font-extrabold tracking-tight" style={{ fontFamily: 'Nunito Sans, Manrope, Inter, sans-serif' }}>Swapparel</h1>
+            </div>
+          </div>
+          <button aria-label="Notifications" className="rounded-full border border-slate-200 bg-white p-2 shadow-sm">
+            <Bell className="h-5 w-5" />
           </button>
         </div>
-      </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="mx-auto max-w-md px-4 pb-24 pt-4">
+        <OnboardingBanner />
+        <Recommendations />
+        <BrowseSection />
+        <section className="mt-8 rounded-2xl bg-white p-4 shadow-sm border border-slate-200">
+          <h2 className="text-lg font-bold">Safety, connection, and fun</h2>
+          <p className="mt-1 text-sm text-slate-600">Our community values trust. Profiles include ratings and reviews, chats are secure, and youre in control of every swap.</p>
+        </section>
+      </main>
+
+      <BottomNav />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
